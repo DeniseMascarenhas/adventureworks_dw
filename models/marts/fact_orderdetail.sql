@@ -22,17 +22,9 @@ with
         select *
         from {{ ref('dim_product') }}
     )    
-    , city as (
+    , location as (
         select *
-        from {{ ref('dim_city') }}
-    )
-    , bill_address_with_city_sk as (
-        select
-            addressid
-            , city_sk
-    
-        from {{ ref('stg_address') }} as address
-        left join city on address.city = city.city
+        from {{ ref('dim_location') }}
     )
     , ship_address_with_city_sk as (
         select
@@ -40,7 +32,7 @@ with
             , city_sk
     
         from {{ ref('stg_address') }} as address
-        left join city on address.city = city.city
+        left join location on address.city = location.city
     )
     , order_with_sk as (
         select
@@ -49,8 +41,6 @@ with
             , customer.customer_sk as customer_fk
             , creditcard_with_type_sk.creditcardid            
             , creditcard_with_type_sk.cardtype_sk as cardtype_fk
-            , salesorderheader.billtoaddressid
-            , bill_address_with_city_sk.city_sk as bill_city_fk
             , salesorderheader.shiptoaddressid
             , ship_address_with_city_sk.city_sk as ship_city_fk
             , salesorderheader.orderdate
@@ -74,7 +64,6 @@ with
         left join salesperson                on salesorderheader.salespersonid   = salesperson.businessentityid
         left join customer                   on salesorderheader.customerid      = customer.customerid
         left join creditcard_with_type_sk    on salesorderheader.creditcardid    = creditcard_with_type_sk.creditcardid
-        left join bill_address_with_city_sk  on salesorderheader.billtoaddressid = bill_address_with_city_sk.addressid
         left join ship_address_with_city_sk  on salesorderheader.shiptoaddressid = ship_address_with_city_sk.addressid
     )
     , order_detail_with_sk as (
@@ -100,9 +89,7 @@ with
             , order_with_sk.duedate
             , order_with_sk.shipdate
             , order_with_sk.status
-            , order_with_sk.billtoaddressid
             , order_with_sk.shiptoaddressid
-            , order_with_sk.bill_city_fk
             , order_with_sk.ship_city_fk
             , order_with_sk.shipmethodid
             , order_with_sk.currencyrateid

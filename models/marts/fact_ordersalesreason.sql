@@ -5,7 +5,7 @@ with
     )
     , order_detail as (
         select *
-        from {{ ref('fact_order_detail') }}        
+        from {{ ref('fact_orderdetail') }}        
     )
     , ordersalesreason as (
         select
