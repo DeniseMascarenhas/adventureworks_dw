@@ -1,0 +1,60 @@
+version: 2
+
+sources:
+  - name: adventureworks_etl
+    description: This is the replica of the Postgres database used by the Indicium customer
+    tables:
+      - name: address
+        description: This table contains data about Adventure Works employee
+
+      - name: countryregion
+        description: This table contains data about Adventure Works employee
+
+      - name: creditcard
+        description: This table contains data about Adventure Works employee
+
+      - name: customer
+        description: This table contains data about Adventure Works employee
+
+      - name: employee
+        description: This table contains data about Adventure Works employee
+
+      - name: person
+        description: This table contains data about Adventure Works employee
+
+      - name: personcreditcard
+        description: This table contains data about Adventure Works employee
+
+      - name: product
+        description: This table contains data about Adventure Works employee
+
+      - name: productcategory
+        description: This table contains data about Adventure Works employee
+
+      - name: productsubcategory
+        description: This table contains data about Adventure Works employee
+
+      - name: salesorderdetail
+        description: This table contains data about Adventure Works employee
+
+      - name: salesorderheader
+        description: This table contains data about Adventure Works employee
+
+      - name: salesorderheadersalesreason
+        description: This table contains data about Adventure Works employee
+
+      - name: salesperson
+        description: This table contains data about Adventure Works employee
+
+      - name: salesreason
+        description: This table contains data about Adventure Works employee
+
+      - name: specialoffer
+        description: This table contains data about Adventure Works employee
+
+      - name: specialofferproduct
+        description: This table contains data about Adventure Works employee
+
+      - name: stateprovince
+        description: This table contains data about Adventure Works employee
+
