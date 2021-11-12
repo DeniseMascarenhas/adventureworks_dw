@@ -7,8 +7,12 @@ with stage_selected as (
 ),
 transformed as (
     select 
-        row_number() over (order by date) as date_sk
-        , *
+        cast(date as date) as date_sk
+        , extract(year FROM date) as year
+        , extract(month FROM date) as month
+        , extract(day FROM date) as day
+        , extract(year from date) * 100 + extract(month from date) as year_month        
+        
     from stage_selected
 )
 select * from transformed

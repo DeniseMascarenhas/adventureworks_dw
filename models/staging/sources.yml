@@ -2,59 +2,54 @@ version: 2
 
 sources:
   - name: adventureworks_etl
-    description: This is the replica of the Postgres database used by the Indicium customer
+    description: This is the replica of the Postgres database used by the Indicium's customer.
     tables:
       - name: address
-        description: This table contains data about Adventure Works employee
+        description: This table contains customers' address information of the Adventure Works.
 
       - name: countryregion
-        description: This table contains data about Adventure Works employee
+        description: This table contains customers' country region of the Adventure Works.
+        
+      - name: stateprovince
+        description: This table contains customers' stateprovince of the Adventure Works.
 
       - name: creditcard
-        description: This table contains data about Adventure Works employee
+        description: This table contains customers' creditcard of the Adventure Works.
 
       - name: customer
-        description: This table contains data about Adventure Works employee
+        description: This table contains customers' information of the Adventure Works.
 
       - name: employee
-        description: This table contains data about Adventure Works employee
+        description: This table contains employees' information of the Adventure Works.
 
       - name: person
-        description: This table contains data about Adventure Works employee
+        description: This table contains persons' information involved with AdventureWorks.
 
       - name: personcreditcard
-        description: This table contains data about Adventure Works employee
+        description: This table contains persons' creditcard involved with AdventureWorks.
 
       - name: product
-        description: This table contains data about Adventure Works employee
+        description: This table contains products' data of the Adventure Works.
 
       - name: productcategory
-        description: This table contains data about Adventure Works employee
+        description: This table contains data about products' category of the Adventure Works.
 
       - name: productsubcategory
-        description: This table contains data about Adventure Works employee
+        description: This table contains data about products' subcategory of the Adventure Works.
 
       - name: salesorderdetail
-        description: This table contains data about Adventure Works employee
+        description: This table contains data about sales orders' details of the Adventure Works.
 
       - name: salesorderheader
-        description: This table contains data about Adventure Works employee
+        description: This table contains data about sales orders' header of the Adventure Works.
 
       - name: salesorderheadersalesreason
-        description: This table contains data about Adventure Works employee
+        description: This table contains data about sales orders' reason of the Adventure Works.
 
       - name: salesperson
-        description: This table contains data about Adventure Works employee
+        description: This table contains sales person' data of the Adventure Works.
 
       - name: salesreason
-        description: This table contains data about Adventure Works employee
+        description: This table contains sales reason' data of the Adventure Works.
 
-      - name: specialoffer
-        description: This table contains data about Adventure Works employee
-
-      - name: specialofferproduct
-        description: This table contains data about Adventure Works employee
-
-      - name: stateprovince
-        description: This table contains data about Adventure Works employee
 

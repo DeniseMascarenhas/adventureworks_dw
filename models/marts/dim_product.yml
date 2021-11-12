@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: This is the Product Dimension table. It includes information about Adventure Works products.
+            
+    columns:
+      - name: product_sk
+        description: Primary key for Product Dimension table.
+        tests:
+          - unique
+          - not_null
+
+      - name: productid
+        description: Primary key for Product table.
+        tests:
+          - unique
+          - not_null
+
+      - name: productname
+        description: Name of the product.
+        tests:
+          - not_null
+
+      - name: productsubcategoryid
+        description: Primary key for productsubcategory table.
+        
+      - name: productsubcategoryname
+        description: Name of the Product Sub Category.
+     
+      - name: productcategoryid
+        description: Primary key for productcategory table.
+        
+      - name: productcategoryname
+        description: Name of the Product Category.
+     
+      - name: makeflag
+        description: Identify if product is purchased (0) or manufactured in-house (1- Default).
+     
+      - name: finishedgoodsflag
+        description: Identify if product is not a salable item (0) or salable (1- Default).
+
+      - name: safetystocklevel
+        description: Minimum inventory quantity.
+
+      - name: reorderpoint
+        description: Inventory level that triggers a purchase order or work order.
+            
+      - name: standardcost
+        description: Standard cost of the product.
+
+      - name: listprice
+        description: Selling price.
+
+      - name: color
+        description: Product color.
+
+      - name: size
+        description: product size.
+
+      - name: sizeunitmeasurecode
+        description: Unit of measure for Size column.
+
+      - name: weightunitmeasurecode
+        description: Unit of measure for Weight column.
+
+      - name: weight 
+        description: Product weight.
+
+      - name: daystomanufacture
+        description: Number of days required to manufacture the product.
+
+      - name: productline
+        description: Product line (R = Road, M = Mountain, T = Touring, S = Standard).
+
+      - name: class  
+        description: Product class (H = High, M = Medium, L = Low).
+
+      - name: style
+        description: Product style (W = Womens, M = Mens, U = Universal).
+
+      - name: sellstartdate
+        description: Date the product was available for sale.
+
+      - name: sellenddate         
+        description: Date the product was no longer available for sale.

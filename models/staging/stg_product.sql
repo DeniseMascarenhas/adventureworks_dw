@@ -1,39 +1,53 @@
-with source as (
-    select
-        /* Primary Key */
-        productid
+with
+    productsubcategory as (
+        select *
+        from {{ source('adventureworks_etl', 'productsubcategory') }}
+    )
+    , productcategory as (
+        select *
+        from {{ source('adventureworks_etl', 'productcategory') }}
+    )
+    , source_selected as (
+        select
+            /* Primary Key */
+            productid
         
-        /* Entity attributes */
-        , name
-        , productsubcategoryid
-        , productnumber
-        , sellenddate
-        , safetystocklevel
-        , finishedgoodsflag
-        , class
-        , makeflag
-        , reorderpoint
-        , productmodelid
-        , weightunitmeasurecode
-        , standardcost
-        , style
-        , sizeunitmeasurecode
-        , listprice
-        , daystomanufacture
-        , productline
-        , size
-        , color
-        , sellstartdate
-        , weight
-        , rowguid
-        , modifieddate
+            /* Entity attributes */
+            , product.name as productname
+            , productsubcategory.productsubcategoryid
+            , productsubcategory.name as productsubcategoryname
+            , productcategory.productcategoryid
+            , productcategory.name as productcategoryname
+            , productnumber
+            , sellenddate
+            , safetystocklevel
+            , finishedgoodsflag
+            , class
+            , makeflag
+            , reorderpoint
+            , productmodelid
+            , weightunitmeasurecode
+            , standardcost
+            , style
+            , sizeunitmeasurecode
+            , listprice
+            , daystomanufacture
+            , productline
+            , size
+            , color
+            , sellstartdate
+            , weight
+            , product.rowguid
+            , product.modifieddate
 
-        /* Stitch columns */
-        , _sdc_table_version
-        , _sdc_sequence
-        , _sdc_received_at
-        , _sdc_batched_at
-                
-    from {{ source('adventureworks_etl', 'product') }}
+            /* Stitch columns */
+            , product._sdc_table_version
+            , product._sdc_sequence
+            , product._sdc_received_at
+            , product._sdc_batched_at
+
+        from {{ source('adventureworks_etl', 'product') }} as product
+        left join productsubcategory on product.productsubcategoryid = productsubcategory.productsubcategoryid
+        left join productcategory on productsubcategory.productcategoryid = productcategory.productcategoryid
 )
-select * from source
+select * from source_selected

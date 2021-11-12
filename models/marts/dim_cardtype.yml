@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: dim_cardtype
+    description: This is the Card Type Dimension table. It includes information about type of card used in order.
+
+    columns:
+      - name: cardtype_sk
+        description: The primary key of the Card Type Dimension.
+        tests:
+          - unique
+          - not_null
+
+      - name: cardtype
+        description: The natural key of the Card Type Dimension.
+        tests:
+          - unique
+          - not_null

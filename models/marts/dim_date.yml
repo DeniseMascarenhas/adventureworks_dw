@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: This is the Date Dimension table. It includes information about sales date.
+
+    columns:
+      - name: date_sk
+        description: The primary key of the Date Dimension table.
+        tests:
+          - unique
+          - not_null
+
+      - name: year
+        description: The year of the date.
+        tests:
+          - not_null
+
+      - name: month
+        description: The month of the date.
+        tests:
+          - not_null
+
+      - name: day
+        description: The day of the date.
+        tests:
+          - not_null
+
+      - name: year_month
+        description: The year and month of the date.
+        tests:
+          - not_null

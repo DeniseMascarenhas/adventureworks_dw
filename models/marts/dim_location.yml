@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: dim_location
+    description: This is the Location Dimension table. It includes information about sales order's ship location.
+
+    columns:
+      - name: location_sk
+        description: The primary key of the Location Dimension table.
+        tests:
+          - unique
+          - not_null
+
+      - name: city
+        description: The name of the city.
+        tests:
+          - not_null
+
+      - name: stateprovinceid
+        description: The natural key of the state or province.
+        tests:
+          - not_null
+
+      - name: stateprovinceid
+        description: The name of the state or province.
+        tests:
+          - not_null
+          
+      - name: countryregioncode
+        description: The code of the country region.
+        tests:
+          - not_null
+      
+      - name: countryregionname
+        description: The name of the country region.
+        tests:
+          - not_null

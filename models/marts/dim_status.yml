@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: dim_status
+    description: This is the Status Dimension table. It includes information about Adventure Works sales order status.
+            
+    columns:
+      - name: status_sk
+        description: Primary key for Sales Reason Dimension table.
+        tests:
+          - unique
+          - not_null
+
+      - name: status
+        description: Natural key for Sales Reason Dimension table.
+        tests:
+          - unique
+          - not_null

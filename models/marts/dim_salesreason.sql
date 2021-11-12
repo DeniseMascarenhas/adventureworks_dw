@@ -1,8 +1,8 @@
 with stage_selected as (
     select
-        salesreasonid
-        , name
-        , reasontype
+        salesreasonid 
+        , name as salesreasonname
+        , reasontype as reasontype
         
     from {{ ref('stg_salesreason') }}
 ),

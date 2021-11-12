@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: This is the Customers Dimension table. It includes information about Adventure Works customers.
+
+    columns:
+      - name: customer_sk
+        description: The primary key of the Customer Dimension table.
+        tests:
+          - unique
+          - not_null
+
+      - name: customerid
+        description: The natural key of the Customer Dimension table.
+        tests:
+          - unique
+          - not_null
+
+      - name: name
+        description: The name of the customer (Person.FirstName + Person.MiddleName + Person.LastName).
+        
+      - name: personid
+        description: The Foreign key to Person.BusinessEntityId.

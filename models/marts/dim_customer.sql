@@ -5,17 +5,12 @@ with
     )
     , stage_selected as (
         select
-            /* customer */
-            customerid
-            , territoryid
-            , storeid
-            /* person */
-            , firstname
-            , middlename
-            , lastname
+            customer.customerid
+            , concat(IFNULL(firstname, ''), ' ', IFNULL(middlename, ''), ' ', IFNULL(lastname, '')) as customername
+            , customer.personid     
             
         from {{ ref('stg_customer') }} as customer
-        left join person on customer.customerid = person.businessentityid
+        left join person on customer.personid = person.businessentityid
 ),
 transformed as (
     select

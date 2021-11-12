@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: fact_salesorderseason
+    description: This is the Order Sales Reason Fact table. It includes information about Adventure Works sales orders' sales reason.
+
+    columns:
+      - name: salesorder_fk
+        description: Primary key of the Sales Order Sales Reason table
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('fact_salesorder')
+              field: salesorder_sk
+
+      - name: salesreason_fk
+        description: Primary key of the Sales Reason table
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_salesreason')
+              field: salesreason_sk

@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: fact_salesorder
+    description: This is the Sales Order Fact table. It includes information about Adventure Works order header and order items.
+    
+    columns:
+      - name: salesorder_sk
+        description: Primary key of the Sales Order table.
+        tests:
+          - unique
+          - not_null
+
+      - name: salesorderid
+        description: Primary key of the Sales Order Header table.
+        tests:
+          - not_null
+
+      - name: customer_fk
+        description: Foreign key of the sales order's customer
+        tests:
+          - relationships:
+              to: ref('dim_customer')
+              field: customer_sk
+
+      - name: cardtype_fk
+        description: Foreign key of the Credit Card Type Dimension table.
+        tests:
+          - relationships:
+              to: ref('dim_cardtype')
+              field: cardtype_sk
+
+      - name: orderdate_fk
+        description: Foreign key of the Date Dimension table.
+
+      - name: status_fk
+        description: Order current status (1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled)
+
+      - name: shiplocation_fk 
+        description: Customer shipping location. Foreign key to Localiton Dimension table.
+
+      - name: onlineorderflag
+        description: Indicator of Order placed by sales person (0) or Order placed online by customer (1).
+
+      - name: taxamt
+        description: Tax amount.
+
+      - name: subtotal
+        description: Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal) for the appropriate SalesOrderID.
+
+      - name: freight
+        description: Shipping cost.
+
+      - name: totaldue
+        description: Total due from customer (Subtotal + TaxAmt + Freight).
+
+      - name: salesorderdetailid
+        description: Primary key for Sales Order Detail table. One incremental unique number per product sold.
+      
+      - name: product_fk
+        description: Foreign key for product of the Sales Order Detail.
+        tests:
+          - relationships:
+              to: ref('dim_product')
+              field: product_sk
+
+      - name: orderqty
+        description: The order details' quantity
+
+      - name: unitprice
+        description: The product's unit price of the order detail
+
+      - name: unitpricediscount
+        description: The product's discount of the order detail
